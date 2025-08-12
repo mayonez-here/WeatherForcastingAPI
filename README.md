@@ -18,10 +18,13 @@ A React-based weather application providing real-time forecasts and interactive 
 - **APIs**: OpenWeather, Unsplash, Nominatim  
 - **Styling**: CSS3 (variables, flexbox, grid)  
 
+## Installation
+1. Clone repo  
+2. `npm install`  
+3. Add API keys in `.env`  
+4. `npm start`  
 
 ## Lessons Learned
 - Managing API rate limits  
 - Fixing Leaflet map rendering quirks  
-- Responsive chart design with Recharts
-
-  
+- Responsive chart design with Recharts 
