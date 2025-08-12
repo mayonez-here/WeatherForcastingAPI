@@ -3,7 +3,7 @@
   publish = "build"
 
 [build.environment]
-  NODE_VERSION = "18.x"  # Matches React 18's requirements
+  NODE_VERSION = "18.16.0"  # Exact LTS version
 
 [context.production.environment]
   GENERATE_SOURCEMAP = "false"
