@@ -3,8 +3,5 @@
   publish = "build"
 
 [build.environment]
-  NODE_VERSION = "18.16.0"  # Exact LTS version
-
-[context.production.environment]
-  GENERATE_SOURCEMAP = "false"
-  CI = "false"
+  NODE_VERSION = "18.16.0"  # Must be exact version
+  NPM_VERSION = "9.5.1"
