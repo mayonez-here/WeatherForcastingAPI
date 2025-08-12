@@ -13,7 +13,13 @@ export default function App() {
   const API_KEY = process.env.REACT_APP_OPENWEATHER_KEY;
   const UNSPLASH_ACCESS_KEY = process.env.REACT_APP_UNSPLASH_KEY;
 
+  const [data, setData] = useState(null);
+   useEffect(() => {
+    fetchData().then(result => setData(result));
+  }, []);
 
+  if (!data) return <div>Loading...</div>;
+  
   const [bgImage, setBgImage] = useState("");
   const [location, setLocation] = useState({ lat: 40.7128, lon: -74.006 }); // Default NYC
   const [theme, setTheme] = useState("light");
