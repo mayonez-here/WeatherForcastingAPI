@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[build.environment]
+  NODE_VERSION = "18.x"  # Matches React 18's requirements
+
+[context.production.environment]
+  GENERATE_SOURCEMAP = "false"
+  CI = "false"
