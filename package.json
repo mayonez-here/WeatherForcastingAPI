@@ -3,15 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "18.20.2",  // Current LTS (Long-Term Support) version
+    "node": "18.20.2",  
     "npm": "10.5.0"
   },
   "dependencies": {
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-scripts": "5.0.1",  // Must match React 18
-    "react-router-dom": "6.22.1",  // Latest compatible with Node 18
-    // Keep other existing dependencies
+    "react-scripts": "5.0.1",  
+    "react-router-dom": "6.22.1",  
+    
   },
   "scripts": {
     "start": "set SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
