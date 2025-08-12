@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { LocationProvider } from "./context/LocationContext";
 import SearchPage from "./pages/SearchPage";
@@ -6,7 +6,6 @@ import SevenDayForecastPage from "./pages/SevenDayForecastPage";
 import HourlyForecastPage from "./pages/HourlyForecastPage";
 import Footer from './components/Footer';
 import './App.css';
-// Add this at the top of your App.js
 import './MobileOverrides.css'; 
 
 export default function App() {
@@ -14,15 +13,27 @@ export default function App() {
   const UNSPLASH_ACCESS_KEY = process.env.REACT_APP_UNSPLASH_KEY;
 
   const [data, setData] = useState(null);
-   useEffect(() => {
-    fetchData().then(result => setData(result));
-  }, []);
-
-  if (!data) return <div>Loading...</div>;
-  
   const [bgImage, setBgImage] = useState("");
   const [location, setLocation] = useState({ lat: 40.7128, lon: -74.006 }); // Default NYC
   const [theme, setTheme] = useState("light");
+
+  // Define fetchData function using useCallback
+  const fetchData = useCallback(async () => {
+    try {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${API_KEY}`
+      );
+      return await response.json();
+    } catch (error) {
+      console.error("Fetch error:", error);
+      return null;
+    }
+  }, [API_KEY, location.lat, location.lon]);
+
+  // Fetch weather data
+  useEffect(() => {
+    fetchData().then(result => setData(result));
+  }, [fetchData]);
 
   async function updateBackgroundImage(cityName) {
     if (!cityName) return;
@@ -53,6 +64,8 @@ export default function App() {
   useEffect(() => {
     updateBackgroundImage("New York City");
   }, []);
+
+  if (!data) return <div>Loading...</div>;
 
   return (
    
