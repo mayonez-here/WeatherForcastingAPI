@@ -2,6 +2,10 @@
   "name": "weather-app",
   "version": "0.1.0",
   "private": true,
+  "installCommand": "npm install --legacy-peer-deps",
+"scripts": {
+  "build": "CI=false react-scripts build"
+},
   "engines": {
     "node": "18.x"
   },
