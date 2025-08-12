@@ -6,7 +6,7 @@ import SevenDayForecastPage from "./pages/SevenDayForecastPage";
 import HourlyForecastPage from "./pages/HourlyForecastPage";
 import Footer from './components/Footer';
 import './App.css';
-import './MobileOverrides.css'; 
+import './MobileOverrides.css';
 
 export default function App() {
   const API_KEY = process.env.REACT_APP_OPENWEATHER_KEY;
@@ -14,10 +14,10 @@ export default function App() {
 
   const [data, setData] = useState(null);
   const [bgImage, setBgImage] = useState("");
-  const [location, setLocation] = useState({ lat: 40.7128, lon: -74.006 }); // Default NYC
+  const [location, setLocation] = useState({ lat: 40.7128, lon: -74.006 });
   const [theme, setTheme] = useState("light");
 
-  // Define fetchData function using useCallback
+  // All functions should be consistently defined with const + useCallback
   const fetchData = useCallback(async () => {
     try {
       const response = await fetch(
@@ -30,20 +30,13 @@ export default function App() {
     }
   }, [API_KEY, location.lat, location.lon]);
 
-  // Fetch weather data
-  useEffect(() => {
-    fetchData().then(result => setData(result));
-  }, [fetchData]);
-
-  async function updateBackgroundImage(cityName) {
+  const updateBackgroundImage = useCallback(async (cityName) => {
     if (!cityName) return;
-    
     try {
       const res = await fetch(
         `https://api.unsplash.com/photos/random?query=${cityName} skyline&orientation=landscape&client_id=${UNSPLASH_ACCESS_KEY}`
       );
       const data = await res.json();
-      
       if (data?.urls?.full) {
         setBgImage(`${data.urls.full}&w=1920&h=1080&fit=crop`);
       }
@@ -52,21 +45,21 @@ export default function App() {
     }
   }, [UNSPLASH_ACCESS_KEY]);
 
-
-  function toggleTheme() {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  }
-
   const handleLocationChange = useCallback((lat, lon) => {
-  setLocation({ lat, lon });
-}, []);
+    setLocation({ lat, lon });
+  }, []);
 
-  // Set initial background for default location
- useEffect(() => {
-  updateBackgroundImage("New York City");
-}, [updateBackgroundImage]); // Add dependency
+  const toggleTheme = useCallback(() => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  }, []);
 
-  
+  useEffect(() => {
+    fetchData().then(result => setData(result));
+  }, [fetchData]);
+
+  useEffect(() => {
+    updateBackgroundImage("New York City");
+  }, [updateBackgroundImage]);
 
   if (!data) return <div>Loading...</div>;
 
