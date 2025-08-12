@@ -22,4 +22,6 @@ A React-based weather application providing real-time forecasts and interactive 
 ## Lessons Learned
 - Managing API rate limits  
 - Fixing Leaflet map rendering quirks  
-- Responsive chart design with Recharts  
+- Responsive chart design with Recharts
+
+  
