@@ -50,20 +50,23 @@ export default function App() {
     } catch (err) {
       console.error("Error fetching Unsplash image:", err);
     }
-  }
+  }, [UNSPLASH_ACCESS_KEY]);
 
-  function handleLocationChange(lat, lon) {
-    setLocation({ lat, lon });
-  }
 
   function toggleTheme() {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   }
 
+  const handleLocationChange = useCallback((lat, lon) => {
+  setLocation({ lat, lon });
+}, []);
+
   // Set initial background for default location
-  useEffect(() => {
-    updateBackgroundImage("New York City");
-  }, []);
+ useEffect(() => {
+  updateBackgroundImage("New York City");
+}, [updateBackgroundImage]); // Add dependency
+
+  
 
   if (!data) return <div>Loading...</div>;
 
