@@ -32,7 +32,7 @@
     "predeploy": "npm install --legacy-peer-deps",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "postinstall": "patch-package || true"
+    "postinstall": "rm -rf node_modules/.cache"
   },
   "eslintConfig": {
     "extends": [
