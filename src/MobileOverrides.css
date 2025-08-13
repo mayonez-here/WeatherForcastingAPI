@@ -1,0 +1,172 @@
+/* MobileOverrides.css - Nuclear Option for Mobile */
+@media only screen and (max-width: 767px) {
+  /* 1. BASE RESETS */
+  * {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-wrap: break-word !important;
+  }
+  
+  html, body {
+    width: 100% !important;
+    overflow-x: hidden !important;
+    -webkit-text-size-adjust: 100% !important;
+    touch-action: manipulation !important;
+  }
+
+  .theme-toggle-btn {
+    top: 60px !important; /* Moves it down below 12h link */
+    right: 12px !important;
+    padding: 8px 12px !important;
+    font-size: 14px !important;
+    z-index: 1000 !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2) !important;
+  }
+
+  nav {
+    display: flex !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    padding: 0 10px !important;
+    box-sizing: border-box !important;
+  }
+
+  nav a, 
+  nav button, 
+  nav .nav-item { /* Target all nav items */
+    flex: 1 !important; /* Equal width */
+    min-width: 0 !important; /* Allows shrinking */
+    margin: 0 5px !important;
+    text-align: center !important;
+    padding: 10px 5px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  /* If using actual buttons */
+  nav button {
+    background: var(--btn-bg) !important;
+    border: 1px solid var(--btn-border) !important;
+    border-radius: 8px !important;
+  }
+
+  /* 2. APP CONTAINER */
+  .app-container {
+    padding: 12px !important;
+    width: 100vw !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 3. SEARCH BAR - STACKED */
+  .search-bar,
+  .searchbar-form {
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+  
+  .search-bar input,
+  .searchbar-input {
+    width: 100% !important;
+    border-radius: 8px !important;
+    margin: 0 !important;
+    padding: 12px !important;
+    font-size: 16px !important;
+  }
+  
+  .search-bar button,
+  .searchbar-button {
+    width: 100% !important;
+    border-radius: 8px !important;
+    padding: 12px !important;
+    margin: 0 !important;
+  }
+
+  /* 4. FORECAST CARDS */
+  .forecast-daily-list,
+  .forecast-hourly-list {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x mandatory !important;
+    padding-bottom: 15px !important;
+    margin: 0 -12px !important;
+  }
+  
+  .forecast-day-card,
+  .forecast-hour-card {
+    min-width: 140px !important;
+    flex: 0 0 auto !important;
+    scroll-snap-align: start !important;
+    margin: 0 6px !important;
+  }
+
+  /* 5. WEATHER CARD */
+  .weather-card {
+    width: calc(100% - 24px) !important;
+    margin: 12px !important;
+    padding: 16px !important;
+  }
+
+  /* 6. MAP CONTAINER */
+  .location-map-container {
+    height: 50vh !important;
+    width: 100vw !important;
+    margin-left: -12px !important;
+    border-radius: 0 !important;
+  }
+
+  /* 7. TABS */
+  .tab-buttons {
+    display: flex !important;
+    overflow-x: auto !important;
+    padding-bottom: 8px !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  
+  .tab-button {
+    flex: 0 0 auto !important;
+    padding: 10px 16px !important;
+    white-space: nowrap !important;
+  }
+
+  /* 8. TYPOGRAPHY */
+  h1 {
+    font-size: 1.8rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .temp {
+    font-size: 2rem !important;
+  }
+}
+
+/* Extra Small Devices (e.g., iPhone 5/SE) */
+@media only screen and (max-width: 374px) {
+  .app-container {
+    padding: 8px !important;
+  }
+  
+  .forecast-day-card,
+  .forecast-hour-card {
+    min-width: 120px !important;
+    padding: 8px !important;
+  }
+  
+  .weather-card {
+    padding: 12px !important;
+  }
+
+  
+}
+
+/* Orientation-specific fixes */
+@media only screen and (max-width: 767px) and (orientation: landscape) {
+  .location-map-container {
+    height: 60vh !important;
+  }
+}
